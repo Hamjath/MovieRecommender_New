@@ -1,33 +1,34 @@
 from flask import Flask, render_template, request
-from model.recommender import MovieRecommender
-import os
+# from model.recommender import MovieRecommender
+# import os
 app = Flask(__name__)
 
-recommender = MovieRecommender(
-    "data/tmdb_5000_movies.csv",
-    "data/tmdb_5000_credits.csv"
-)
+# recommender = MovieRecommender(
+#     "data/tmdb_5000_movies.csv",
+#     "data/tmdb_5000_credits.csv"
+# )
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    recommendations = []
-    error = None
+    return "Movie Recommender System is under construction."
+    # recommendations = []
+    # error = None
 
-    if request.method == "POST":
-        movie = request.form.get("movie")
-        print("User typed:", movie)  # debug line
+    # if request.method == "POST":
+    #     movie = request.form.get("movie")
+    #     print("User typed:", movie)  # debug line
 
-        recommendations = recommender.recommend(movie)
+    #     recommendations = recommender.recommend(movie)
 
-        if not recommendations:
-            error = "Movie not found in dataset. Please try another title."
+    #     if not recommendations:
+    #         error = "Movie not found in dataset. Please try another title."
 
-    return render_template(
-        "index.html",
-        recommendations=recommendations,
-        error=error
-    )
+    # return render_template(
+    #     "index.html",
+    #     recommendations=recommendations,
+    #     error=error
+    # )
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    #port = int(os.environ.get("PORT", 5000))
+    app.run()
